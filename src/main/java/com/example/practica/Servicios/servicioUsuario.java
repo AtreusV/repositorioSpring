@@ -43,7 +43,18 @@ public class servicioUsuario {
     }
 
     public ArrayList<Usuario> actualizar(int codigo){
-        buscarusuario(codigo);
+        Usuario borrusu = buscarusuario(codigo);
+
+        ArrayList<String> listaa= new ArrayList<>();
+        listaa.add("aaaa");
+
+        for (Usuario i : lista) {
+            i.getIdUsuario();
+            System.out.println(i);
+            if (i.getIdUsuario() == borrusu.idUsuario){
+                System.out.println("\n"+ borrusu.idUsuario + "\n");
+            }
+        }
         return lista;
     }
 }

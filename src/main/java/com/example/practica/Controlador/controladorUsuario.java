@@ -33,7 +33,7 @@ public class controladorUsuario {
         return servicio.borrarUsuario(codigo);
     }
 
-    @PostMapping("/actualUsuario/{code}")
+    @GetMapping("/actualUsuario/{code}")
     public ArrayList<Usuario> actulUsuario(@PathVariable("code") int codigo){
         return servicio.actualizar(codigo);
     }
