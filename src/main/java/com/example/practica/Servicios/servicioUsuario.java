@@ -4,6 +4,7 @@ import com.example.practica.Entidades.Usuario;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class servicioUsuario {
 
@@ -38,7 +39,11 @@ public class servicioUsuario {
 
     public ArrayList<Usuario> borrarUsuario(int codigo){
         lista.remove(buscarusuario(codigo));
-        System.out.println(lista);
+        return lista;
+    }
+
+    public ArrayList<Usuario> actualizar(int codigo){
+        buscarusuario(codigo);
         return lista;
     }
 }

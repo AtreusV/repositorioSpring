@@ -76,22 +76,20 @@ $(document).ready(function() {
         let tabla = document.querySelector('#tabla')
         tabla.innerHTML = '<table><tr><th>ID</th><th>NOMBRE</th><th>PAÍS</th><th>FECHA NACIMIENTO</th><th>CORREO</th></tr></table>'
         
-        let codigo = $('#Codigo').val();
+        let codigo = $('#codigo').val();
 
         $.ajax({
             url:"http://localhost:8080/borrarUsuario/"+codigo,
             Type:"GET",
-            dataType:"TEXT",
+            dataType:"JSON",
             success:function(respuesta){
-                if(respuesta!=null){
-                    for (i = 0;i <= respuesta.length; i++){
-                        tabla.innerHTML += 
-                        '<tr><td>' + respuesta[i].idUsuario +
-                        '<td>' + respuesta[i].nombreUsu +
-                        '<td>' + respuesta[i].pais +
-                        '<td>' + respuesta[i].fechaNa +
-                        '<td>' + respuesta[i].correoUsu
-                    }
+                for (i = 0;i <= respuesta.length; i++){
+                    tabla.innerHTML += 
+                    '<tr><td>' + respuesta[i].idUsuario +
+                    '<td>' + respuesta[i].nombreUsu +
+                    '<td>' + respuesta[i].pais +
+                    '<td>' + respuesta[i].fechaNa +
+                    '<td>' + respuesta[i].correoUsu
                 }
             }
         })
