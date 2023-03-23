@@ -42,17 +42,18 @@ public class servicioUsuario {
         return lista;
     }
 
-    public ArrayList<Usuario> actualizar(int codigo){
+    public ArrayList<Usuario> actualizar(Usuario newUsuario){
         Usuario borrusu = buscarusuario(codigo);
-
-        ArrayList<String> listaa= new ArrayList<>();
-        listaa.add("aaaa");
 
         for (Usuario i : lista) {
             i.getIdUsuario();
             System.out.println(i);
             if (i.getIdUsuario() == borrusu.idUsuario){
-                System.out.println("\n"+ borrusu.idUsuario + "\n");
+                i.setNombreUsu(nombre);
+                System.out.println(i.getNombreUsu());
+                //i.setPais(newPais);
+                //i.setFechaNa(newfechaNacimiento);
+                //i.setCorreoUsu(newCorreo);
             }
         }
         return lista;

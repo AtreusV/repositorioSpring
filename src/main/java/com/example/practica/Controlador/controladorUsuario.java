@@ -5,6 +5,7 @@ import com.example.practica.Entidades.Usuario;
 import com.example.practica.Servicios.servicioUsuario;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @CrossOrigin(origins= "*", maxAge = 3600)
@@ -33,8 +34,8 @@ public class controladorUsuario {
         return servicio.borrarUsuario(codigo);
     }
 
-    @GetMapping("/actualUsuario/{code}")
-    public ArrayList<Usuario> actulUsuario(@PathVariable("code") int codigo){
-        return servicio.actualizar(codigo);
+    @PostMapping("/actualUsuario")
+    public ArrayList<Usuario> actulUsuario(@RequestBody Usuario newUsu ){
+        return servicio.actualizar(newUsu);
     }
 }

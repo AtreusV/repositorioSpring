@@ -39,7 +39,7 @@ $(document).ready(function() {
             type: "POST",
             data: datosEnvio,
             contentType: "application/JSON",
-            dataType: "TEXT",
+            dataType: "JSON",
             success: function(respuesta) {
                 alert(respuesta)
             }
@@ -94,5 +94,26 @@ $(document).ready(function() {
             }
         })
 
+    });
+
+    $('#actualizar').on('click',function(){
+        let d = {
+            idUsuario: parseInt($('#idUsuario').val()),
+            nombreUsu: $('#nomUsuario').val(),
+            pais: $('#paisUsu').val(),
+            fechaNa: $('#fechaNac').val(),
+            correoUsu: $('#CorrUsu').val()
+        }
+    
+        let Datos = JSON.stringify(d);
+
+        $.ajax({
+            url: "http://localhost:8080/actualUsuario/" + Datos,
+            type: "POST",
+            dataType: "TEXT",
+            success: function(respuesta) {
+                alert(respuesta)
+            }
+        })
     });
 });
