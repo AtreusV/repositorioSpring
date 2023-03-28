@@ -71,6 +71,34 @@ $(document).ready(function() {
             }
         })
     });
+
+    $('#buscarName').on('click',function(){
+        let nombre = $('#nombre_Usu').val();
+    
+        let tabla = document.querySelector('#tabla')
+        tabla.innerHTML = '<table><tr><th>ID</th><th>NOMBRE</th><th>PAÍS</th><th>FECHA NACIMIENTO</th><th>CORREO</th></tr></table>'
+    
+        $.ajax({
+            url:"http://localhost:8080/buscarNombre/"+nombre,
+            Type:"GET",
+            dataType:"JSON",
+            success:function(respuesta){
+
+                console.log(respuesta)
+                if(respuesta!=null){
+                    tabla.innerHTML += 
+                    '<tr><td>' + respuesta[i].idUsuario +
+                    '<td>' + respuesta.nombreUsu +
+                    '<td>' + respuesta.pais +
+                    '<td>' + respuesta.fechaNa +
+                    '<td>' + respuesta.correoUsu
+                }else{
+                    console.log("No se encontro el usuario.")
+                    console.log(respuesta)
+                }
+            }
+        })
+    });
     
     $('#eliminarUsu').on('click',function(){
         let tabla = document.querySelector('#tabla')
@@ -104,16 +132,19 @@ $(document).ready(function() {
             fechaNa: $('#fechaNac').val(),
             correoUsu: $('#CorrUsu').val()
         }
+
+        console.log(fechaNa)
     
         let Datos = JSON.stringify(d);
 
         $.ajax({
-            url: "http://localhost:8080/actualUsuario/" + Datos,
+            url: "http://localhost:8080/actualUsuario",
             type: "POST",
-            dataType: "TEXT",
-            success: function(respuesta) {
-                alert(respuesta)
-            }
-        })
+            data: Datos,
+            dataType: "JSON",
+            //dataType: "TEXT",
+            contentType: "application/JSON"
+        });
     });
+    
 });
