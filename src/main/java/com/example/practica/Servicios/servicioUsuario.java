@@ -72,19 +72,20 @@ public class servicioUsuario {
 
 
     /*
-    public ArrayList<Usuario> actualizarUsuario(Usuario newUsu){
+    public ArrayList<Usuario> actualizarUsuario1(Usuario newUsu){
 
         for (Usuario i : lista) {
 
             if (i.getIdUsuario() == newUsu.getIdUsuario()){
-                i.setNombreUsu(newUsu.nombreUsu);
-                i.setPais(newUsu.pais);
-                i.setFechaNa(newUsu.fechaNa);
-                i.setCorreoUsu(newUsu.correoUsu);
+                i.setNombreUsu(newUsu.getNombreUsu());
+                i.setPais(newUsu.getPais());
+                i.setFechaNa(newUsu.getFechaNa());
+                i.setCorreoUsu(newUsu.getCorreoUsu());
             }
         }
         return lista;
     }
     */
+
 }
 
