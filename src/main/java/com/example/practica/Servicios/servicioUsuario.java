@@ -1,6 +1,9 @@
 package com.example.practica.Servicios;
 
 import com.example.practica.Entidades.Usuario;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -39,7 +42,6 @@ public class servicioUsuario {
 
     public ArrayList<Usuario> buscar_nombre(String name){
         String usu = null;
-        listnombre.clear();
 
         for(Usuario u: lista){
             if(u.getNombreUsu().equals(name)){
@@ -54,38 +56,26 @@ public class servicioUsuario {
         return lista;
     }
 
+    public String ModificarUsu(Usuario usuario){
+        boolean cambio = false;
+        for (Usuario Es : lista){
+            if (Es.getIdUsuario() == usuario.getIdUsuario()){
 
-    public String actualizarUsuario(Usuario newUsu){
-
-        for (Usuario i : lista) {
-
-            if (i.getIdUsuario() == newUsu.getIdUsuario()){
-
-                i.setNombreUsu(newUsu.getNombreUsu());
-                i.setPais(newUsu.getPais());
-                i.setFechaNa(newUsu.getFechaNa());
-                i.setCorreoUsu(newUsu.getCorreoUsu());
+                Es.setNombreUsu(usuario.getNombreUsu());
+                Es.setCorreoUsu(usuario.getCorreoUsu());
+                Es.setPais(usuario.getPais());
+                Es.setFechaNa(usuario.getFechaNa());
+                cambio = true;
             }
         }
-        return "extito";
-    }
 
-
-    /*
-    public ArrayList<Usuario> actualizarUsuario1(Usuario newUsu){
-
-        for (Usuario i : lista) {
-
-            if (i.getIdUsuario() == newUsu.getIdUsuario()){
-                i.setNombreUsu(newUsu.getNombreUsu());
-                i.setPais(newUsu.getPais());
-                i.setFechaNa(newUsu.getFechaNa());
-                i.setCorreoUsu(newUsu.getCorreoUsu());
-            }
+        String respuesta = "";
+        if(cambio == true){
+            respuesta = "Se han actualizado los datos";
+        }else{
+            respuesta = "No se han actualizado los datos";
         }
-        return lista;
+        return respuesta;
     }
-    */
-
 }
 

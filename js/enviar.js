@@ -84,17 +84,13 @@ $(document).ready(function() {
             dataType:"JSON",
             success:function(respuesta){
 
-                console.log(respuesta)
-                if(respuesta!=null){
+                for (i = 0;i <= respuesta.length; i++){
                     tabla.innerHTML += 
                     '<tr><td>' + respuesta[i].idUsuario +
-                    '<td>' + respuesta.nombreUsu +
-                    '<td>' + respuesta.pais +
-                    '<td>' + respuesta.fechaNa +
-                    '<td>' + respuesta.correoUsu
-                }else{
-                    console.log("No se encontro el usuario.")
-                    console.log(respuesta)
+                    '<td>' + respuesta[i].nombreUsu +
+                    '<td>' + respuesta[i].pais +
+                    '<td>' + respuesta[i].fechaNa +
+                    '<td>' + respuesta[i].correoUsu
                 }
             }
         })
@@ -133,18 +129,18 @@ $(document).ready(function() {
             correoUsu: $('#CorrUsu').val()
         }
 
-        console.log(fechaNa)
-    
+        console.log(d)
         let Datos = JSON.stringify(d);
 
         $.ajax({
-            url: "http://localhost:8080/actualUsuario",
+            url: "http://localhost:8080/ModificarUsuario",
             type: "POST",
             data: Datos,
             dataType: "JSON",
-            //dataType: "TEXT",
             contentType: "application/JSON"
         });
     });
     
 });
+
+//dataType: "TEXT",

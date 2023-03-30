@@ -38,8 +38,8 @@ public class controladorUsuario {
         return servicio.borrar_usuario(codigo);
     }
 
-    @PostMapping("/actualUsuario")
-    public String actulUsuario(@RequestBody Usuario newUsu ){
-        return servicio.actualizarUsuario(newUsu);
+    @PostMapping("/ModificarUsuario")
+    public String ModificarUsuario(@RequestBody Usuario usuario ){
+        return servicio.ModificarUsu(usuario);
     }
 }
